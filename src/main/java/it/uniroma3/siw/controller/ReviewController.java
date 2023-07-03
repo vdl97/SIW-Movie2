@@ -33,7 +33,9 @@ public class ReviewController {
 	private ReviewValidator reviewValidator;
 	@Autowired
 	private MovieController movieController;
-
+	@Autowired
+	private CredentialsService credentialsService;
+	
 	@GetMapping(value="/default/formNewReview/{id}")
 	public String formNewReview(@PathVariable("id") Long id, Model model) {
 		
@@ -43,6 +45,12 @@ public class ReviewController {
 			boolean flag=this.reviewService.checkReviewForAuthorAndRelatedMovie(id);
 			model.addAttribute("flag", flag);
 			model.addAttribute("text", new String("Hai già inserito una recensione per questo film!"));
+			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+			String role = credentials.getRole();
+			if (role.equals(Credentials.ADMIN_ROLE)) 
+				model.addAttribute("role", role);
 			return "movie.html";
 			}
 		Review review = new Review();

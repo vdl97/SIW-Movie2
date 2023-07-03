@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class Movie {
     @Max(2023)
 	private Integer year;
     
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
 	private Set<Picture> pictures;
 	
 	@ManyToOne
@@ -41,7 +42,7 @@ public class Movie {
 	@ManyToMany
 	private Set<Artist> actors;
 	
-	@OneToMany(mappedBy="relatedMovie", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy="relatedMovie", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Review> reviews;
 
 	public Long getId() {
