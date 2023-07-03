@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cerca Film</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Cerca film per anno</h1>
+	<form th:action="@{/searchMovies}" method="post" th:object="${movie}">
+		<div>Anno: <input type="text" th:field="${movie.year}"  onchange="submit"/>
+		</div>
+		
+	</form>
+</body>
+
+</html>

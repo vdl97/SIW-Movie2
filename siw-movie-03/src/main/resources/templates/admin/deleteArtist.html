@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Delete Artist</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"></head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Vuoi davvero cancellare questo artista?</h1>
+	<a th:href="@{'/admin/confirmDeletionArtist' + '/' + ${artist.id}}">Conferma</a>
+
+	<a href="/admin/manageArtists">Torna a gestione artista</a>
+	<div th:if="${artist}">
+		<span th:text="${artist.name} + ' ' + ${artist.surname}">Dino Risi</span>
+		<span th:if="${artist.dateOfBirth}" th:text="'(' + ${#dates.format(artist.dateOfBirth, 'dd/MM/yyyy')+')'}">20/20/2000</span>
+		<span th:if="${artist.dateOfDeath}"
+			th:text="'(MORTE: ' + ${#dates.format(artist.dateOfBirth, 'dd/MM/yyyy')+')'}"> 10/10/2222</span>
+
+		<div th:each="img : ${artist.pictures}">
+			<span th:if="${img.getImgData()}!=''">
+
+				<!-- Immagine-->
+				<img th:src="'data:image;base64,'+${img.getImgData()}"></img>
+			</span>
+		</div>
+	</div>
+
+</body>
+
+</html>

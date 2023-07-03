@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Film</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Dettagli Film</h1>
+	<div th:if="${movie}">
+		<span th:text="${movie.title}">Up!</span>
+		<span th:text="'(' + ${movie.year} + ')'">2000</span>
+		<div class="container">
+		<div th:each="img : ${movie.pictures}">
+			<span th:if="${img.getImgData()}!=''">
+
+				<!-- Immagine-->
+				<img th:src="'data:image;base64,'+${img.getImgData()}"></img>
+			</span>
+
+		</div>
+		</div>
+		<h2>Recensioni</h2>
+		<ul>
+			<li th:each="review: ${movie.reviews}">
+				<span th:text="${review.title} + ' (' + ${review.author.username} + ')'">Bello spreco! (rossi)</span>
+				<a th:href="@{'/review' + '/' + ${review.id}}">Visualizza</a>
+				<span th:if="${#request.userPrincipal}">
+					<span th:if="${review.author.username}==${#request.userPrincipal.principal.username}">
+						<a th:href="@{'/default/updateReview' + '/' + ${review.id}}">Modifica</a>
+					</span>
+					<a th:if="${role}=='ADMIN'" th:href="@{'/admin/deleteReview'+'/'+${review.id}}"> Cancella</a>
+				</span>
+
+			</li>
+		</ul>
+		<div th:if="${#request.userPrincipal}">
+			<div th:if="${flag}==true" th:text="${text}">Già presente</div>
+			<a th:if="${flag}!=true" th:href="@{'/default/formNewReview/' + ${movie.id}}">Inserisci una recensione</a>
+		</div>
+	</div>
+	<div th:unless="${movie}">Non esiste</div>
+</body>
+
+</html>

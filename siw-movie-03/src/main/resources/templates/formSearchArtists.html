@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Cerca Artista</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Cerca Artista per cognome (attenzione alle maiuscole e minuscole!)</h1>
+	<!-- implementabile? magari più opzioni o onchange quando cambia un solo cambio con vari form e comandi??-->
+	<form th:action="@{/searchArtists}" method="post" th:object="${artist}">
+		<div>Cognome: <input type="text" th:field="${artist.surname}" onchange="submit" />
+		</div>
+
+	</form>
+</body>
+
+</html>

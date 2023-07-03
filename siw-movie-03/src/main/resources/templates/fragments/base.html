@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<body>
+	<header th:fragment="intestazione">
+		<div th:if="${#request.userPrincipal}">
+			<span th:text="${#request.userPrincipal.principal.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${#request.userPrincipal}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+	<div th:fragment="indexImg"><a href="/"><img src="/images/logo-siw.png" width="50%" /></a></div>
+
+	<footer th:fragment="footer">
+		<a th:href="@{/}">Home</a>
+	</footer>
+</body>
+
+</html>

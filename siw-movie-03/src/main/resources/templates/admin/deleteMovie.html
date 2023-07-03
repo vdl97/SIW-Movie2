@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Delete Film</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Vuoi davvero cancellare questo film?</h1>
+	<a th:href="@{'/admin/confirmDeletionMovie' + '/' + ${movie.id}}">Conferma</a>
+
+	<a href="/admin/manageMovies">Torna a gestione film</a>
+	<div th:if="${movie}">
+		<span th:text="${movie.title}">Up!</span>
+		<span th:text="'(' + ${movie.year} + ')'">2000</span>
+		<div class="container">
+
+			<div th:each="img : ${movie.pictures}">
+				<span th:if="${img.getImgData()}!=''">
+
+					<!-- Immagine-->
+					<img th:src="'data:image;base64,'+${img.getImgData()}"></img>
+				</span>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

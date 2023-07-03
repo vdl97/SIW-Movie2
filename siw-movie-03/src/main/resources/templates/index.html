@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		SiwMovie - Homepage
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Consulta l'archivio</h1>
+	<div>
+		<a href="/movie">Elenco Film</a>
+	</div>
+	<div>
+		<a href="/formSearchMovies">Cerca un film per anno</a>
+	</div>
+	<div>
+		<a href="/artist">Elenco Artisti</a>
+	</div>
+	<div>
+		<a href="/formSearchArtists">Cerca un artista per cognome</a>
+	</div>
+</body>
+
+</html>

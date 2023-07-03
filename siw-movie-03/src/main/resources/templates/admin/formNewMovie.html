@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		New Movie
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Aggiungi un film</h1>
+	<form th:action="@{/admin/movie}" method="POST" th:object="${movie}" enctype="multipart/form-data">
+
+		<div>
+			<label>Titolo:</label>
+			<span><input type="text" th:field="${movie.title}" /></span>
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+			</span>
+		</div>
+
+		<div>
+			<label>Anno:</label> <span><input type="text" th:field="${movie.year}" /></span>
+			<span th:if="${#fields.hasErrors('year')}" th:errors="*{year}">
+			</span>
+		</div>
+
+		<div>
+			<span>Immagine<input type="file" accept="image/png, image/jpeg" name="file" multiple></input></span>
+		</div>
+
+		<div>
+			<span><button type="submit">Conferma</button></span>
+		</div>
+	</form>
+</body>
+
+</html>

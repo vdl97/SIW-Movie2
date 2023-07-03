@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Update Movie
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Modifica il film</h1>
+	<form th:action="@{/admin/updateMovie}+'/'+${movie.id}" method="POST" th:object="${movie}">
+		<div>
+			<span th:text="${messaggioErrore}">Errore</span>
+		</div>
+
+		<div>
+			<label>Titolo:</label> <span><input required type="text" th:field="${movie.title}" /></span>
+		</div>
+
+		<div>
+			<label>Anno:</label> <span><input type="text" th:field="${movie.year}" /></span>
+		</div>
+
+		<div>
+			<span><button type="submit">Conferma</button></span>
+		</div>
+	</form>
+</body>
+
+</html>

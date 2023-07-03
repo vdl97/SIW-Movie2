@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		New Artist
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Aggiungi un artista</h1>
+	<form th:action="@{/admin/artist}" method="POST" th:object="${artist}" enctype="multipart/form-data">
+		<div>
+			<span th:text="${messaggioErrore}">Errore</span>
+		</div>
+
+		<div>
+			<label>Nome:</label> <span><input required type="text" th:field="${artist.name}" /></span>
+		</div>
+
+		<div>
+			<label>Cognome:</label> <span><input required type="text" th:field="${artist.surname}" /></span>
+		</div>
+
+		<div>
+			<label>Data di nascita:</label> <span><input type="date" th:field="${artist.dateOfBirth}" /></span>
+		</div>
+
+		<div>
+			<label>Data di morte:</label> <span><input type="date" th:field="${artist.dateOfDeath}" /></span>
+		</div>
+
+		<div>
+			<span>Immagine<input type="file" name="file" multiple></input></span>
+		</div>
+
+		<div>
+			<span><button type="submit">Conferma</button></span>
+		</div>
+	</form>
+</body>
+
+
+</html>

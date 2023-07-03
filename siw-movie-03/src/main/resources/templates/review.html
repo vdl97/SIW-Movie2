@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Review</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h2>Recensione </h2>
+	<div th:if="${review}">
+		<h1 th:text="${review.title}">Che schifezza</h1>
+
+		<h2 th:text="${review.rating}+'/5'">3</h2>
+		<testo th:text="${review.description}">era meglio se dormivo</testo>
+	</div>
+	<footer>
+		<a th:href="@{'/movie/' + ${review.relatedMovie.id}}">Ritorna al film</a>
+	</footer>
+	<div th:unless="${review}">Non esiste</div>
+</body>
+
+</html>

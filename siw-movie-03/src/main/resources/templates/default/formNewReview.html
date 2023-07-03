@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		New Movie
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Aggiungi una recensione per questo film</h1>
+	<form th:action="@{'/default/review/' + ${movie.id}}" method="POST" th:object="${review}">
+
+		<div>
+			<label>Titolo:</label>
+			<span><input type="text" th:field="${review.title}" /></span>
+
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+			</span>
+		</div>
+		<div>
+			<label>Rating (da 1 a 5):</label>
+			<span><input type="text" th:field="${review.rating}" /></span>
+
+			<span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">
+			</span>
+		</div>
+		<div>
+			<label>Desc:</label>
+			<span><input type="text" th:field="${review.description}" /></span>
+
+			<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
+			</span>
+		</div>
+		<div>
+			<span><button type="submit">Conferma</button></span>
+		</div>
+	</form>
+</body>
+
+</html>

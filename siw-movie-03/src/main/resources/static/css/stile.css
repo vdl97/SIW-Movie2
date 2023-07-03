@@ -1,0 +1,85 @@
+testo {
+	font-family: "Geneva";
+	color: dimgrey;
+	font-size: 2em;
+
+}
+
+@media (max-width: 500px) {
+	article {
+		margin: 0 2px;
+	}
+}
+
+
+.container {
+	display: flex;
+	align-items: center top;
+	padding-left: 10px;
+
+}
+
+img {
+	max-width: 100%;
+	max-height: 30em;
+	height: auto;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+h1 {
+	font-family: "Geneva";
+	color: dimgrey;
+	text-shadow: 2px 2px 5px rgb(98, 192, 144);
+}
+
+body {
+	font-family: "Geneva";
+	color: dimgrey;
+}
+
+a {
+	text-decoration: none;
+	color: darkgrey;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+label {
+	width: 8em;
+	display: inline-block;
+}
+
+header {
+	background-color: rgb(98, 192, 144);
+	color: white;
+	height: 1.5em;
+	margin-bottom: 0.5em;
+	padding: 0.2em;
+	text-align: right;
+	font-size: 0.6em;
+
+}
+footer {
+	margin-top: 1em;
+	background-color: rgb(98, 192, 144);
+	color: white;
+	height: 1.5em;
+	margin-bottom: 0.5em;
+	padding: 0.2em;
+	text-align: left;
+	font-size: 0.6em;
+
+}
+footer a {
+	text-decoration: none;
+	color: white;
+	font-size: 1em;
+}
+header a {
+	text-decoration: none;
+	color: white;
+	font-size: 1em;
+}

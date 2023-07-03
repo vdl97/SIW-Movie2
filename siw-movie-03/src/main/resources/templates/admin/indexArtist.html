@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		SiwMovie - Gestione Artisti
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Gestione Artisti</h1>
+	<div>
+		<a href="/admin/formNewArtist">Inserisci i dati di un artista</a>
+	</div>
+	<div>
+		<a href="/admin/manageArtists">Gestisci Artisti</a>
+	</div>
+	<div>
+		<a href="/formSearchArtists">Cerca un artista per cognome</a>
+	</div>
+</body>
+
+</html>

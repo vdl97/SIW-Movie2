@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		SiwMovie - Gestione Film
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Gestione Film</h1>
+	<div>
+		<a href="/admin/formNewMovie">Inserisci i dati di un film</a>
+	</div>
+	<div>
+		<a href="/admin/manageMovies">Gestisci i film</a>
+	</div>
+	<div>
+		<a href="/formSearchMovies">Cerca film per anno</a>
+	</div>
+</body>
+
+</html>
